@@ -1,11 +1,13 @@
 package pagos;
+import java.util.Date;
 
 public class Tarjeta extends Pago {
     private String tipo;
     private String numTransaccion; //No le coloqué la tilde
-    public Tarjeta(float monto, String numTransaccion, String tipo) {
+    public Tarjeta(float monto, Date fecha, String numTransaccion, String tipo) {
         super();
         super.set_monto(monto);
+        super.set_fecha(fecha);
         this.numTransaccion = numTransaccion;
         this.tipo = tipo;
     }

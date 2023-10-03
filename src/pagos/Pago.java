@@ -10,4 +10,11 @@ public abstract class Pago {
     protected void set_monto(float monto) {
         this.monto = monto;
     }
+    public Date get_fecha() {
+        return fecha;
+    }
+    protected void set_fecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
 }

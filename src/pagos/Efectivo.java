@@ -1,11 +1,13 @@
 package pagos;
+import java.util.Date;
 
 public class Efectivo extends Pago {
     private float ingreso;
-    public Efectivo(float con_cuanto_se_paga, float cuanto_se_quiere_pagar) {
+    public Efectivo(float monto, Date fecha, float ingreso_total) {
         super();
-        super.set_monto(cuanto_se_quiere_pagar);
-        this.ingreso = con_cuanto_se_paga;
+        super.set_monto(monto);
+        super.set_fecha(fecha);
+        this.ingreso = ingreso_total;
 
         //FALTA CONSIDERAR CASO INGRESO < MONTO
     }
