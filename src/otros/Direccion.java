@@ -8,4 +8,7 @@ public class Direccion {
     public String get_direccion() {
         return direccion;
     }
+    public void set_direccion(String direccion) {
+        this.direccion = direccion;
+    }
 }

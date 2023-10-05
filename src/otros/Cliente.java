@@ -19,11 +19,20 @@ public class Cliente {
     public String get_nombre() {
         return nombre;
     }
+    public void set_nombre(String nombre) {
+        this.nombre = nombre;
+    }
     public String get_rut() {
         return rut;
     }
+    public void set_rut(String rut) {
+        this.rut = rut;
+    }
     public Direccion get_direccion() {
         return direccion;
+    }
+    public void set_direccion(Direccion direccion) {
+        this.direccion = direccion;
     }
     public ArrayList<OrdenCompra> get_ordenes() {
         return (ArrayList<OrdenCompra>) ordenes.clone(); //Creo que es mejor devolver una copia para dejar protegido al original
@@ -31,9 +40,5 @@ public class Cliente {
     public void add_orden(OrdenCompra orden) {
         ordenes.add(orden);
     }
-}
-
-class OrdenCompra {
-
 }
 

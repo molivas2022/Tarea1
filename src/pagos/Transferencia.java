@@ -14,7 +14,13 @@ public class Transferencia extends Pago {
     public String get_banco() {
         return banco;
     }
+    public void set_banco(String banco) {
+        this.banco = banco;
+    }
     public String get_numCuenta() {
         return numCuenta;
+    }
+    public void set_numCuenta(String numCuenta) {
+        this.numCuenta = numCuenta;
     }
 }

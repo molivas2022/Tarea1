@@ -7,14 +7,14 @@ public abstract class Pago {
     public float get_monto() {
         return monto;
     }
-    protected void set_monto(float monto) {
+    public void set_monto(float monto) {
         this.monto = monto;
-    }
+    } //¿Quizas seria mas adecuado un metodo protected?
     public Date get_fecha() {
         return fecha;
     }
-    protected void set_fecha(Date fecha) {
+    public void set_fecha(Date fecha) {
         this.fecha = fecha;
-    }
+    } //¿Quizas seria mas adecuado un metodo protected?
 
 }

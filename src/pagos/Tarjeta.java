@@ -14,7 +14,13 @@ public class Tarjeta extends Pago {
     public String get_tipo() {
         return tipo;
     }
+    public void set_tipo(String tipo) {
+        this.tipo = tipo;
+    }
     public String get_numTransaccion() {
         return numTransaccion;
+    }
+    public void set_numTransaccion(String numTransaccion) {
+        this.numTransaccion = numTransaccion;
     }
 }
