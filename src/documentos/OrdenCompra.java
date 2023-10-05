@@ -1,9 +1,17 @@
+package documentos;
+
+import otros.*;
+
+import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class OrdenCompra {
     private Date fecha;
     private String estado;
+    private Cliente cliente;
+    private DocTributario documento;
     private ArrayList<DetalleOrden> detalleCompras;
     public float calcPrecioSinIVA(){
         float suma = 0;
@@ -36,6 +44,7 @@ public class OrdenCompra {
     public void agregarArticulo(Articulo articulo, int cantidad) {
         DetalleOrden nueva = new DetalleOrden(articulo, cantidad);
         this.detalleCompras.add(nueva);
+        nueva.setOrden(this);
     }
     public void eliminarArticulo(int posicionEnDetalleCompras) {
         if (posicionEnDetalleCompras >= 0 && posicionEnDetalleCompras < this.detalleCompras.size()) {
@@ -61,20 +70,43 @@ public class OrdenCompra {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+    public String pagar(String metodo, float cantidad) {
+        if (Objects.equals(metodo, "efectivo")) {
+
+        } else if (Objects.equals(metodo, "tarjeta")) {
+
+        } else if (Objects.equals(metodo, "transferencia")) {
+
+        } else {
+            return "Método de pago inválido.";
+        }
+        this.estado = "Pagado";
+        return "Transacción realizada con éxito!";
+    }
 
     @Override
     public String toString() {
-        String string = String.format("Orden de Compra || %s || Estado: %s\n--------------------------------------------------------", String.valueOf(this.fecha.toString().toCharArray(), 4, 15), this.estado);
+        String lineSep = "\n--------------------------------------------------------";
+        String string = String.format("%s de Compra || %s || Estado: %s",this.documento.getDocName(), String.valueOf(this.fecha.toString().toCharArray(), 4, 15), this.estado);
+        string += String.format("\nComprador: %s (%s)", cliente.getNombre(), cliente.getRut());
+        string += lineSep;
         for (int i = 0; i < this.detalleCompras.size(); i++) {
             string += String.format("\n(%d) ", i+1) + this.detalleCompras.get(i).toString();
         }
-        string += String.format("\n--------------------------------------------------------\nTotal sin IVA: $%.2f || IVA: $%.2f || TOTAL: $%.2f", this.calcPrecioSinIVA(), this.calcIVA(), this.calcPrecio());
+        string += lineSep;
+        string += String.format("\nTotal sin IVA: $%.2f || IVA: $%.2f || TOTAL: $%.2f", this.calcPrecioSinIVA(), this.calcIVA(), this.calcPrecio());
         return string;
     }
 
-    public OrdenCompra() {
+    public OrdenCompra(Cliente cliente, String documento) {
         this.fecha = new Date();
         this.estado = "Incompleto";
         this.detalleCompras = new ArrayList<>();
+        this.cliente = cliente;
+        if (Objects.equals(documento, "factura")) {
+            this.documento = new Factura(cliente.getRut(), cliente.getDireccion());
+        } else {
+            this.documento = new Boleta(cliente.getRut(), cliente.getDireccion());
+        }
     }
 }

@@ -1,6 +1,11 @@
+package documentos;
+
+import otros.Articulo;
+
 public class DetalleOrden {
     private int cantidad;
     private final Articulo articulo;
+    private OrdenCompra orden;
     public float calcPrecioSinIVA(){
         return this.articulo.getPrecio() * cantidad;
     }
@@ -20,6 +25,14 @@ public class DetalleOrden {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public OrdenCompra getOrden() {
+        return orden;
+    }
+
+    public void setOrden(OrdenCompra orden) {
+        this.orden = orden;
     }
 
     public DetalleOrden(Articulo articulo, int cantidad) {

@@ -1,3 +1,7 @@
+package otros;
+
+import documentos.DetalleOrden;
+
 import java.util.ArrayList;
 
 public class Articulo {
