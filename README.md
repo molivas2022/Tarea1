@@ -5,4 +5,4 @@ Primera tarea del curso de Programación II.
 
 Fabián Alberto González Uribe *(2022434449)*
 
-(nombre completo) *(matricula)*
+Matías Rodrigo Olivas Henríquez *(2022421061)*
