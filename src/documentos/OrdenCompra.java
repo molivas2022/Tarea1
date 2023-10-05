@@ -52,7 +52,7 @@ public class OrdenCompra {
         }
     }
     public ArrayList<DetalleOrden> getDetalleCompras() {
-        return this.detalleCompras;
+        return (ArrayList<DetalleOrden>) detalleCompras.clone();
     }
 
     public Date getFecha() {

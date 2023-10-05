@@ -1,6 +1,7 @@
 package otros;
 
 import documentos.DetalleOrden;
+import documentos.OrdenCompra;
 
 import java.util.ArrayList;
 
@@ -45,6 +46,10 @@ public class Articulo {
 
     public void agregarOrden(DetalleOrden orden) {
         this.ordenes.add(orden);
+    }
+
+    public ArrayList<DetalleOrden> getOrdenes() {
+        return (ArrayList<DetalleOrden>) ordenes.clone();
     }
 
     @Override
