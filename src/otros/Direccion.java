@@ -3,11 +3,13 @@ package otros;
 public class Direccion {
     private String direccion;
 
-    public String getDireccion() {
+    public Direccion(String direccion) {
+        this.direccion = direccion;
+    }
+    public String get_direccion() {
         return direccion;
     }
-
-    public void setDireccion(String direccion) {
+    public void set_direccion(String direccion) {
         this.direccion = direccion;
     }
 }

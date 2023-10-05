@@ -88,7 +88,7 @@ public class OrdenCompra {
     public String toString() {
         String lineSep = "\n--------------------------------------------------------";
         String string = String.format("%s de Compra || %s || Estado: %s",this.documento.getDocName(), String.valueOf(this.fecha.toString().toCharArray(), 4, 15), this.estado);
-        string += String.format("\nComprador: %s (%s)", cliente.getNombre(), cliente.getRut());
+        string += String.format("\nComprador: %s (%s)", cliente.get_nombre(), cliente.get_rut());
         string += lineSep;
         for (int i = 0; i < this.detalleCompras.size(); i++) {
             string += String.format("\n(%d) ", i+1) + this.detalleCompras.get(i).toString();
@@ -104,9 +104,9 @@ public class OrdenCompra {
         this.detalleCompras = new ArrayList<>();
         this.cliente = cliente;
         if (Objects.equals(documento, "factura")) {
-            this.documento = new Factura(cliente.getRut(), cliente.getDireccion());
+            this.documento = new Factura(cliente.get_rut(), cliente.get_direccion());
         } else {
-            this.documento = new Boleta(cliente.getRut(), cliente.getDireccion());
+            this.documento = new Boleta(cliente.get_rut(), cliente.get_direccion());
         }
     }
 }
