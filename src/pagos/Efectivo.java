@@ -9,7 +9,10 @@ public class Efectivo extends Pago {
         super.set_fecha(fecha);
         this.ingreso = ingreso_total;
 
-        //FALTA CONSIDERAR CASO INGRESO < MONTO
+        if (ingreso_total < monto) {
+            //Pago insuficiente
+            super.set_monto(0);
+        }
     }
     public float calcDevolucion() {
         return super.get_monto() - ingreso;
