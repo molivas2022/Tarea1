@@ -15,6 +15,6 @@ public class Efectivo extends Pago {
         }
     }
     public float calcDevolucion() {
-        return super.get_monto() - ingreso;
+        return ingreso - super.get_monto();
     }
 }

@@ -1,6 +1,7 @@
 package documentos;
 
 import otros.*;
+import pagos.*;
 
 import javax.print.Doc;
 import java.util.ArrayList;
@@ -13,6 +14,8 @@ public class OrdenCompra {
     private Cliente cliente;
     private DocTributario documento;
     private ArrayList<DetalleOrden> detalleCompras;
+    private ArrayList<Pago> pagos;
+    private float monto_pagado;
     public float calcPrecioSinIVA(){
         float suma = 0;
         for (DetalleOrden detalleCompra : detalleCompras) {
@@ -54,6 +57,27 @@ public class OrdenCompra {
     public ArrayList<DetalleOrden> getDetalleCompras() {
         return (ArrayList<DetalleOrden>) detalleCompras.clone();
     }
+    public Pago agregarPago(Pago pago) {
+        if (monto_pagado < calcPrecio()) {
+            pagos.add(pago);
+            monto_pagado += pago.get_monto();
+            if (monto_pagado >= calcPrecio()) {
+                estado = "Pagado";
+            }
+        }
+        else {
+            return pago;
+        }
+        return null;
+    }
+    public void eliminarPago(int posicionEnPagos) {
+        if (posicionEnPagos >= 0 && posicionEnPagos < this.pagos.size()) {
+            pagos.remove(posicionEnPagos);
+        }
+    }
+    public ArrayList<Pago> getPagos() {
+        return (ArrayList<Pago>) pagos.clone();
+    }
 
     public Date getFecha() {
         return fecha;
@@ -70,6 +94,7 @@ public class OrdenCompra {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+    /*
     public String pagar(String metodo, float cantidad) {
         if (Objects.equals(metodo, "efectivo")) {
 
@@ -83,7 +108,7 @@ public class OrdenCompra {
         this.estado = "Pagado";
         return "Transacción realizada con éxito!";
     }
-
+    */
     @Override
     public String toString() {
         String lineSep = "\n--------------------------------------------------------";
@@ -102,6 +127,8 @@ public class OrdenCompra {
         this.fecha = new Date();
         this.estado = "Incompleto";
         this.detalleCompras = new ArrayList<>();
+        this.pagos = new ArrayList<>();
+        this.monto_pagado = 0;
         this.cliente = cliente;
         if (Objects.equals(documento, "factura")) {
             this.documento = new Factura(cliente.get_rut(), cliente.get_direccion());
