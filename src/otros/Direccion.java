@@ -12,4 +12,9 @@ public class Direccion {
     public void set_direccion(String direccion) {
         this.direccion = direccion;
     }
+
+    @Override
+    public String toString() {
+        return this.direccion;
+    }
 }
