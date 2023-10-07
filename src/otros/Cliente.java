@@ -44,4 +44,16 @@ public class Cliente {
     public void add_orden(OrdenCompra orden) {
         ordenes.add(orden);
     }
+
+    @Override
+    public String toString() {
+        String string = "";
+        string += String.format("Cliente: %s (%s)\nDireccion: %s\n", this.nombre, this.rut, this.direccion);
+        string += "\nÓrdenes activas:";
+        for (int i = 0; i < this.ordenes.size(); i++) {
+            string += String.format("\n\n-------------ORDEN N°%d-------------\n", i+1);
+            string += this.ordenes.get(i);
+        }
+        return string;
+    }
 }

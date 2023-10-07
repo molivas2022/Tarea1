@@ -54,7 +54,7 @@ public class Articulo {
 
     @Override
     public String toString() {
-        return String.format("%s || Desc: %s || Peso: %.2f || Precio: $%.2f", this.nombre, this.descripcion, this.peso, this.precio);
+        return String.format("%s || %s || Peso: %.2f || Precio: $%.2f", this.nombre, this.descripcion, this.peso, this.precio);
     }
 
     public Articulo(String nombre, String descripcion, float precio, float peso) {

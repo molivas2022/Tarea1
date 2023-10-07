@@ -130,6 +130,7 @@ public class OrdenCompra {
         this.pagos = new ArrayList<>();
         this.monto_pagado = 0;
         this.cliente = cliente;
+        this.cliente.add_orden(this);
         if (Objects.equals(documento, "factura")) {
             this.documento = new Factura(cliente.get_rut(), cliente.get_direccion());
         } else {

@@ -23,4 +23,9 @@ public class Transferencia extends Pago {
     public void set_numCuenta(String numCuenta) {
         this.numCuenta = numCuenta;
     }
+
+    @Override
+    public String toString() {
+        return String.format(super.toString() + " || Banco: %s (N° Cuenta %s)", "Transferencia", this.banco, this.numCuenta);
+    }
 }

@@ -17,4 +17,8 @@ public abstract class Pago {
         this.fecha = fecha;
     } //¿Quizas seria mas adecuado un metodo protected?
 
+    @Override
+    public String toString() {
+        return String.format("Pago con %%s || %s || Monto: %.2f", String.valueOf(this.fecha.toString().toCharArray(), 4, 15), this.monto);
+    }
 }

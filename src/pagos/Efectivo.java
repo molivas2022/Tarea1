@@ -15,6 +15,11 @@ public class Efectivo extends Pago {
         }
     }
     public float calcDevolucion() {
-        return ingreso - super.get_monto();
+        return this.ingreso - super.get_monto();
+    }
+
+    @Override
+    public String toString() {
+        return String.format(super.toString() + " || Dinero pagado: %.2f", "Efectivo", this.ingreso);
     }
 }

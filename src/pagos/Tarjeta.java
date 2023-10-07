@@ -23,4 +23,9 @@ public class Tarjeta extends Pago {
     public void set_numTransaccion(String numTransaccion) {
         this.numTransaccion = numTransaccion;
     }
+
+    @Override
+    public String toString() {
+        return String.format(super.toString() + " || N° Transacción: %s", String.format("Tarjeta (%s)", this.tipo), this.numTransaccion);
+    }
 }
